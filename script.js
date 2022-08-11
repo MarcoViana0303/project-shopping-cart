@@ -1,3 +1,5 @@
+/* const { fetchProducts } = require("./helpers/fetchProducts"); */
+
 const createProductImageElement = (imageSource) => {
   const img = document.createElement('img');
   img.className = 'item__image';
@@ -23,6 +25,7 @@ const createProductItemElement = ({ sku, name, image }) => {
 
   return section;
 };
+console.log(fetchProducts(createProductItemElement));
 
 const getSkuFromProductItem = (item) => item.querySelector('span.item__sku').innerText;
 
@@ -37,5 +40,4 @@ const createCartItemElement = ({ sku, name, salePrice }) => {
   li.addEventListener('click', cartItemClickListener);
   return li;
 };
-
 window.onload = () => { };
