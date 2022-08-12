@@ -1,5 +1,7 @@
+/* const { fetchItem } = require("./helpers/fetchItem"); */
 /* const { fetchProducts } = require("./helpers/fetchProducts"); */
 const itemLista = document.querySelector('.items');
+const carrinhoItem = document.querySelector('.cart__items');
 
 const createProductImageElement = (imageSource) => {
   const img = document.createElement('img');
@@ -29,7 +31,6 @@ const createProductItemElement = ({ sku, name, image }) => {
 const adicionarProduto = async () => {
   const produto = await fetchProducts();
   const produtos = produto.results;
-  
   produtos.forEach((elemento) => {
    const { id: sku, title: name, thumbnail: image } = elemento;
      itemLista.appendChild(createProductItemElement({ sku, name, image }));
@@ -51,4 +52,14 @@ const createCartItemElement = ({ sku, name, salePrice }) => {
   li.addEventListener('click', cartItemClickListener);
   return li;
 };
+
+const adicionarAoCarrinho = async (itemID) => {
+const produto = await fetchItem(itemID);
+const { price: salePrice, id: sku, title: name } = produto;
+
+  carrinhoItem.appendChild(createCartItemElement({ sku, name, salePrice }));
+return carrinhoItem;
+};
+adicionarAoCarrinho('MLB1341706310');
+
 window.onload = () => { };
