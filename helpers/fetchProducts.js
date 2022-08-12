@@ -7,18 +7,15 @@ Outra forma de fazer:
  .catch((erro) => erro);
  */
   
- const fetchProducts = async () => 
- {
+ const fetchProducts = async () => {
   try {
     const resposta = await fetch('https://api.mercadolibre.com/sites/MLB/search?q=computador');
-    const exemplo1= await resposta.json();
+    const exemplo1 = await resposta.json();
     return exemplo1;
   } catch (error) {
-    return new Error('You must rovide an url')
+    return new Error('You must rovide an url');
   }
- 
- }
-
+ };
 
 if (typeof module !== 'undefined') {
   module.exports = {
