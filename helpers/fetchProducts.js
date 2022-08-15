@@ -1,6 +1,6 @@
- const fetchProducts = async () => {
+ const fetchProducts = async (pc) => {
   try {
-    const resposta = await fetch('https://api.mercadolibre.com/sites/MLB/search?q=computador');
+    const resposta = await fetch(`https://api.mercadolibre.com/sites/MLB/search?q=${pc}`);
     const respostaAPI = await resposta.json();
     return respostaAPI;
   } catch (error) {

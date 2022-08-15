@@ -50,7 +50,7 @@ const createProductItemElement = ({ sku, name, image }) => {
 };
 
 const adicionarProduto = async () => {
-  const produto = await fetchProducts();
+  const produto = await fetchProducts('computador');
   const produtos = produto.results;
   produtos.forEach((elemento) => {
    const { id: sku, title: name, thumbnail: image } = elemento;
