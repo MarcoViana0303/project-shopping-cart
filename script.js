@@ -34,7 +34,6 @@ const adicionarAoCarrinho = async (itemID) => {
 const produto = await fetchItem(itemID);
 const { price: salePrice, id: sku, title: name } = produto;
 carrinhoItem.appendChild(createCartItemElement({ sku, name, salePrice }));
-
 };
 
 const createProductItemElement = ({ sku, name, image }) => {
@@ -62,8 +61,5 @@ const adicionarProduto = async () => {
 adicionarProduto();
 
 const getSkuFromProductItem = (item) => item.querySelector('span.item__sku').innerText;
-
-
-
 
 window.onload = () => { };
