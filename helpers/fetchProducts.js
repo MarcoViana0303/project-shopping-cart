@@ -4,7 +4,7 @@
     const respostaAPI = await resposta.json();
     return respostaAPI;
   } catch (error) {
-    return new Error('You must provide an url');
+     return error;
   }
  };
 
