@@ -2,6 +2,7 @@
 /* const { fetchProducts } = require("./helpers/fetchProducts"); */
 const itemLista = document.querySelector('.items');
 const carrinhoItem = document.querySelector('.cart__items');
+const btnLimpar = document.querySelector('.empty-cart');
 
 const createProductImageElement = (imageSource) => {
   const img = document.createElement('img');
@@ -67,5 +68,9 @@ document.body.appendChild(paragraph);
 adicionarProduto();
 
 const getSkuFromProductItem = (item) => item.querySelector('span.item__sku').innerText;
+
+btnLimpar.addEventListener('click', () => {
+  carrinhoItem.innerHTML = '';
+});
 
 window.onload = () => { };
