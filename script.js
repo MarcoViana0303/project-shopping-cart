@@ -19,7 +19,7 @@ const createCustomElement = (element, className, innerText) => {
 
 const cartItemClickListener = (event) => {
   // coloque seu código aqui
-  
+ event.target.remove();
 };
 
 const createCartItemElement = ({ sku, name, salePrice }) => {
@@ -45,18 +45,24 @@ const createProductItemElement = ({ sku, name, image }) => {
   const botao = createCustomElement('button', 'item__add', 'Adicionar ao carrinho!');
   botao.addEventListener('click', () => adicionarAoCarrinho(sku));
   section.appendChild(botao);
-
+  
   return section;
 };
 
 const adicionarProduto = async () => {
+  const paragraph = document.createElement('p');
+  paragraph.innerText = 'carregando...';
+paragraph.className = 'loading';
+document.body.appendChild(paragraph);
   const produto = await fetchProducts('computador');
+  paragraph.remove();
+
   const produtos = produto.results;
   produtos.forEach((elemento) => {
-   const { id: sku, title: name, thumbnail: image } = elemento;
-     itemLista.appendChild(createProductItemElement({ sku, name, image }));
+    const { id: sku, title: name, thumbnail: image } = elemento;
+    itemLista.appendChild(createProductItemElement({ sku, name, image }));
   });
- };
+};
 
 adicionarProduto();
 
