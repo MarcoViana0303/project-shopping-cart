@@ -3,6 +3,7 @@
 const itemLista = document.querySelector('.items');
 const carrinhoItem = document.querySelector('.cart__items');
 const btnLimpar = document.querySelector('.empty-cart');
+const armazenamento = [];
 
 const createProductImageElement = (imageSource) => {
   const img = document.createElement('img');
@@ -72,5 +73,10 @@ const getSkuFromProductItem = (item) => item.querySelector('span.item__sku').inn
 btnLimpar.addEventListener('click', () => {
   carrinhoItem.innerHTML = '';
 });
+
+const addArmazenamentoLocal = (valor) => {
+  armazenamento.push(valor);
+  saveCartItems('favorite', armazenamento);
+};
 
 window.onload = () => { };
